@@ -1,0 +1,37 @@
+[
+    {
+        "from": "jan hajek",
+        "to": "jan hajek",
+        "balance": "1000",
+        "date": "2026-09-16T17:04:37.527900",
+        "type": "insert balance"
+    },
+    {
+        "from": "filip novak",
+        "to": "jan hajek",
+        "balance": "100",
+        "date": "2026-09-16T17:04:54.219561",
+        "type": "balance transfer"
+    },
+    {
+        "from": "jan hajek",
+        "to": "jan hajek",
+        "balance": "100",
+        "date": "2026-09-16T17:05:44.568043",
+        "type": "insert balance"
+    },
+    {
+        "from": "filip novak",
+        "to": "jan hajek",
+        "balance": "100",
+        "date": "2026-09-16T17:06:04.050281",
+        "type": "balance transfer"
+    },
+    {
+        "from": "filip novak",
+        "to": "jan hajek",
+        "balance": "100",
+        "date": "2026-09-16T17:07:00.360880",
+        "type": "balance transfer"
+    }
+]

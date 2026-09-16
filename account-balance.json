@@ -5,7 +5,7 @@
         "phone": "+420123456789",
         "account-number": 18365,
         "state": "active",
-        "balance": 1000
+        "balance": 1500
     },
     {
         "name_surname": "filip novak",
@@ -13,6 +13,6 @@
         "phone": "+420789456123",
         "account-number": 71815,
         "state": "active",
-        "balance": 0
+        "balance": 500
     }
 ]
