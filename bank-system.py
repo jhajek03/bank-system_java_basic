@@ -37,14 +37,19 @@ def create_account():
     print(f"Account created successfully!")
 
 
-def insert_balance(acc_num):
-    balance = input("Enter balance to be inserted: ")
+def insert_balance(acc_num, **kwargs):
+    balance = kwargs.get("balance")
+    if not balance:
+        balance = input("Enter balance to be inserted: ")
+
     with open("account-balance.json", "r") as f:
         accounts = json.load(f)
 
     for account in accounts:
-        if account["account-number"] == acc_num:
-            account["balance"] += balance
+        if account["account-number"] == acc_num and account["state"] == "active":
+            account["balance"] += int(balance)
+        elif account["state"] == "inactive" or account["state"] == "deleted":
+            print("Unable to insert balance due to account's state")
 
     with open("account-balance.json", "w") as f:
         json.dump(accounts, f, indent=4)
@@ -52,14 +57,20 @@ def insert_balance(acc_num):
     print(f"Balance updated successfully!")
 
 
-def withdraw(acc_num):
-    balance = input("Enter balance to be withdrawn: ")
+def withdraw(acc_num, **kwargs):
+    balance = kwargs.get("balance")
+
+    if not balance:
+        balance = input("Enter balance to be withdrawn: ")
+
     with open("account-balance.json", "r") as f:
         accounts = json.load(f)
 
     for account in accounts:
-        if account["account-number"] == acc_num:
-            account["balance"] -= balance
+        if account["account-number"] == acc_num and account["state"] == "active":
+            account["balance"] -= int(balance)
+        elif account["state"] == "inactive" or account["state"] == "deleted":
+            print("Unable to withdraw balance due to account's state")
 
     with open("account-balance.json", "w") as f:
         json.dump(accounts, f, indent=4)
@@ -69,6 +80,6 @@ def withdraw(acc_num):
 
 
 if __name__ == "__main__":
-    create_account()
-    #insert_balance(18365)
-    #withdraw(18365)
+    #create_account()
+    insert_balance(18365)
+    withdraw(18365, balance = 500)
