@@ -1,6 +1,6 @@
 import random
 import json
-#tvorba účtu
+
 #vklad/výběr
 #převody
 #historie transakcí
@@ -40,9 +40,35 @@ def create_account():
     print(f"Account created successfully!")
 
 
+def insert_balance(acc_num, balance):
+    with open("account-balance.json", "r") as f:
+        accounts = json.load(f)
 
+    for account in accounts:
+        if account["account-number"] == acc_num:
+            account["balance"] += balance
+
+    with open("account-balance.json", "w") as f:
+        json.dump(accounts, f, indent=4)
+
+    print(f"Balance updated successfully!")
+
+def withdraw(acc_num, balance):
+    with open("account-balance.json", "r") as f:
+        accounts = json.load(f)
+
+    for account in accounts:
+        if account["account-number"] == acc_num:
+            account["balance"] -= balance
+
+    with open("account-balance.json", "w") as f:
+        json.dump(accounts, f, indent=4)
+
+    print(f"Balance updated successfully!")
 
 
 
 if __name__ == "__main__":
     create_account()
+    #insert_balance(18365, 1000)
+    #withdraw(18365, 500)
